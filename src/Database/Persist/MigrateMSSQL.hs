@@ -315,6 +315,7 @@ getColumn _ _ x =
 -- @INFORMATION_SCHEMA@ tables.
 parseType :: Monad m => ByteString -> m SqlType
 parseType "tinyint"    = return SqlBool
+parseType "bit"        = return SqlBool
 -- Ints
 parseType "int"        = return SqlInt32
 parseType "short"      = return SqlInt32
@@ -330,6 +331,7 @@ parseType "decimal"    = return SqlReal
 parseType "numeric"    = return SqlReal
 -- Text
 parseType "varchar"    = return SqlString
+parseType "nvarchar"   = return SqlString
 parseType "varstring"  = return SqlString
 parseType "string"     = return SqlString
 parseType "text"       = return SqlString
@@ -344,6 +346,7 @@ parseType "time"       = return SqlTime
 parseType "datetime"   = return SqlDayTime
 parseType "datetime2"  = return SqlDayTime
 parseType "timestamp"  = return SqlDayTime
+parseType "datetimeoffset" = return SqlDayTime
 parseType "date"       = return SqlDay
 parseType "newdate"    = return SqlDay
 parseType "year"       = return SqlDay
